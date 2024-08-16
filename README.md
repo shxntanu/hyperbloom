@@ -1,4 +1,4 @@
-# HyperBloom
+# hyperbloom
 
 A collection of high performance bloom filter data structures for use in C. All filters use the 64-bit version of [Cyan4973](https://github.com/Cyan4973)'s [xxhash](https://github.com/Cyan4973/xxhash) algorithm
 
