@@ -2,6 +2,36 @@
 
 A collection of high performance bloom filter data structures for use in C. All filters use the 64-bit version of [Cyan4973](https://github.com/Cyan4973)'s [xxhash](https://github.com/Cyan4973/xxhash) algorithm
 
+## Building and Executing
+
+Make sure you have CMake installed. Clone the repository and then download `vcpkg` to install required libraries.
+
+```bash
+git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
+./bootstrap-vcpkg.sh
+./vcpkg integrate install
+```
+
+Install the dependencies
+
+```bash
+./vcpkg install
+```
+
+Run CMake
+
+```bash
+cmake ..
+```
+
+Build and run the bloom test.
+
+```bash
+make
+./bloom
+```
+
 ## What is a Bloom Filter?
 
 <div align="center">
