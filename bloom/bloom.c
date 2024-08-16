@@ -188,7 +188,9 @@ BloomFilter *Load(const char *filename) {
   return bf;
 }
 
-// Function to merge a loaded BloomFilter with an existing one
+/**
+ * Function to merge a loaded BloomFilter with an existing one
+ */
 int MergeBloomFilter(BloomFilter *bf, const char *filename) {
   BloomFilter *loaded_bf = Load(filename);
   if (loaded_bf == NULL) {
