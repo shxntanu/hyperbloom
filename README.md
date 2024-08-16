@@ -2,35 +2,6 @@
 
 A collection of high performance bloom filter data structures for use in C. All filters use the 64-bit version of [Cyan4973](https://github.com/Cyan4973)'s [xxhash](https://github.com/Cyan4973/xxhash) algorithm
 
-## Building and Executing
-
-Make sure you have CMake installed. Clone the repository and then download `vcpkg` to install required libraries.
-
-```bash
-git clone https://github.com/Microsoft/vcpkg.git
-cd vcpkg
-./bootstrap-vcpkg.sh
-./vcpkg integrate install
-```
-
-Install the dependencies
-
-```bash
-./vcpkg install
-```
-
-Run CMake
-
-```bash
-cmake ..
-```
-
-Build and run the bloom test.
-
-```bash
-make
-./bloom
-```
 
 ## What is a Bloom Filter?
 
@@ -78,3 +49,33 @@ The following operations are executed to check if an item is a member of the blo
 -   verify if all the bits at identified buckets are set to one
 
 If any of the identified bits are set to zero, the item is not a member of the bloom filter. If all the bits are set to one, the item might be a member of the bloom filter. The uncertainty about the membership of an item is due to the possibility of some bits being set to one by different items or due to hash function collisions.
+
+## Building and Executing
+
+Make sure you have CMake installed. Clone the repository and then download `vcpkg` to install required libraries.
+
+```bash
+git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
+./bootstrap-vcpkg.sh
+./vcpkg integrate install
+```
+
+Install the dependencies
+
+```bash
+./vcpkg install
+```
+
+Run CMake
+
+```bash
+cmake ..
+```
+
+Build and run the bloom test.
+
+```bash
+make
+./bloom
+```
