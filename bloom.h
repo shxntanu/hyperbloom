@@ -7,6 +7,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+// Assert Macro
+#define assert(condition, message)                                             \
+  do {                                                                         \
+    if (!(condition)) {                                                        \
+      fprintf(stderr, "Assertion failed: %s\n", message);                      \
+      exit(1);                                                                 \
+    }                                                                          \
+  } while (0)
 typedef struct BloomFilter {
   uint64_t *bv;            // Bit vector
   uint64_t size;           // Size of bit vector. Must be a power of 2.
@@ -20,3 +28,7 @@ int setBit(BloomFilter *bf, uint64_t idx);
 bool getBit(BloomFilter *bf, uint64_t idx);
 bool Lookup(BloomFilter *bf, const char *entry);
 int Insert(BloomFilter *bf, const char *entry);
+
+void TestBFSetBit();
+void TestNewBloomFilter();
+void TestBloomFilter();
