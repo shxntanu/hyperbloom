@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(hyperbloom)
+
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
+
+find_package(xxHash CONFIG REQUIRED)
+
+add_executable(hyperbloom bloom.c)
+
+target_link_libraries(hyperbloom PRIVATE xxHash::xxhash)

@@ -1,0 +1,6 @@
+/vcpkg_installed
+/vcpkg
+/.vscode
+/build
+
+CMakeCache.txt
