@@ -6,6 +6,6 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.c
 
 find_package(xxHash CONFIG REQUIRED)
 
-add_executable(hyperbloom bloom.c)
+add_executable(hyperbloom bloom_test.c bloom.c)
 
 target_link_libraries(hyperbloom PRIVATE xxHash::xxhash)
