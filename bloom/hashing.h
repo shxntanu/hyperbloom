@@ -1,8 +1,10 @@
-#include "xxhash.h" // You'll need to download and include the xxHash library
+#include "xxhash.h"
 #include <stdlib.h>
 #include <string.h>
 
-// Hash an entry "n" number of times with a 64 bit hash
+/**
+ * Hash an entry "n" number of times with a 64 bit hash
+ */
 uint64_t *hashEntry(const uint8_t *entry, size_t entry_len, int n) {
   uint64_t *out = malloc(n * sizeof(uint64_t));
   if (out == NULL) {
@@ -10,21 +12,21 @@ uint64_t *hashEntry(const uint8_t *entry, size_t entry_len, int n) {
     return NULL;
   }
 
-  uint8_t *pert = malloc(entry_len);
-  if (pert == NULL) {
+  uint8_t *cpy = malloc(entry_len);
+  if (cpy == NULL) {
     free(out);
     return NULL;
   }
-  memcpy(pert, entry, entry_len);
+  memcpy(cpy, entry, entry_len);
 
   for (int i = 0; i < n; i++) {
-    // Modify the last byte of pert
-    pert[entry_len - 1] = pert[entry_len - 1] & 0xFF;
+    // Modify the last byte of cpy
+    cpy[entry_len - 1] = cpy[entry_len - 1] & 0xFF;
 
     // Hash the modified entry
-    out[i] = XXH64(pert, entry_len, 0); // 0 is the seed
+    out[i] = XXH64(cpy, entry_len, 0); // 0 is kept as the seed
   }
 
-  free(pert);
+  free(cpy);
   return out;
 }
