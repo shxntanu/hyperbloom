@@ -8,3 +8,6 @@ find_package(xxHash CONFIG REQUIRED)
 
 add_executable(bloom bloom/bloom_test.c bloom/bloom.c)
 target_link_libraries(bloom PRIVATE xxHash::xxhash)
+
+add_executable(naive_bloom naive-bloom/naive_test.c naive-bloom/naive.c)
+target_link_libraries(naive_bloom PRIVATE xxHash::xxhash)
