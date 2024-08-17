@@ -2,7 +2,6 @@
 
 A collection of high performance bloom filter data structures for use in C. All filters use the 64-bit version of [Cyan4973](https://github.com/Cyan4973)'s [xxhash](https://github.com/Cyan4973/xxhash) algorithm
 
-
 ## What is a Bloom Filter?
 
 <div align="center">
@@ -49,6 +48,14 @@ The following operations are executed to check if an item is a member of the blo
 -   verify if all the bits at identified buckets are set to one
 
 If any of the identified bits are set to zero, the item is not a member of the bloom filter. If all the bits are set to one, the item might be a member of the bloom filter. The uncertainty about the membership of an item is due to the possibility of some bits being set to one by different items or due to hash function collisions.
+
+## Naive Bloom
+
+A bloom filter implemented using a **byte array** (with each bit in the filter assigned to a byte). This reduces the number of instructions necessary to perform a lookup in the go 1.4 and latest gcc-go compilers. As a result, the NaiveBloomFilter will almost always be faster than the standard variants at the cost of an **8x penalty in memory usage**. For small to medium-sized filters, using bytes instead of bits means that more of the filter can fit into the CPU cache. Cache access is much faster than main memory access, leading to significant speed improvements.
+
+Accessing and manipulating bytes is often more efficient than manipulating individual bits. Modern processors are optimized for **byte-aligned operations**, which can reduce the number of CPU instructions needed for lookups and insertions.
+
+This version uses centralized locking (via a RWMutex) and is perfect for a filter that will mainly be used for reads or in a single threaded context (use the LookupAsync and InsertAsync functions to bypass the mutex in this case). For very small (<20 million buckets) bloom filters, the NaiveBloomFilter can yield enormous performance boosts since most of the filter fits in the processor cache.
 
 ## Building and Executing
 
