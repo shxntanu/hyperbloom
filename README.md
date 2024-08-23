@@ -10,7 +10,7 @@ A collection of high performance bloom filter data structures for use in C. All 
 
 </div>
 
-> This is a gist of the Bloom Filter. For an in-depth explanation and a much more visual understanding, checkout [this amazing article](https://systemdesign.one/bloom-filters-explained/) systemdesign.one.
+> This is a gist of the Bloom Filter. For an in-depth explanation and a much more visual understanding, checkout [this amazing article](https://systemdesign.one/bloom-filters-explained/) by systemdesign.one.
 
 While creating an account, you want to enter a cool username, you entered it and got a message, **“Username is already taken”**. You then tried a bunch of variations, and all kept saying that the username was taken until you found one that was still available. In this process, ever wondered how the website manages to search through millions of usernames to determine if it is taken?
 
